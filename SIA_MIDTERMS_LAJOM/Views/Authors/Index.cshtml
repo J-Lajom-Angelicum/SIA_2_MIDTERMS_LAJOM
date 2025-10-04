@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SIA_MIDTERMS_LAJOM.Models.DTO.AuthorDTO.AuthorReadDTO>
+
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<h2>Authors</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Author ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Contract</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr>
+                <td>@author.AuId</td>
+                <td>@author.AuLname</td>
+                <td>@author.AuFname</td>
+                <td>@author.Phone</td>
+                <td>@author.Address</td>
+                <td>@author.City</td>
+                <td>@author.State</td>
+                <td>@author.Zip</td>
+                <td>@(author.Contract ? "Yes" : "No")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@author.AuId"
+                       class="btn btn-sm btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@author.AuId"
+                       class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

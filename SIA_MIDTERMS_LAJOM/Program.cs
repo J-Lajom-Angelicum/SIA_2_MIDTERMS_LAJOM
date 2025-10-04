@@ -1,7 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using SIA_MIDTERMS_LAJOM.Models;
+using SIA_MIDTERMS_LAJOM.Models.Mapping;
+using SIA_MIDTERMS_LAJOM.Models.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+// Registers database context
+builder.Services.AddDbContext<pubsContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("pubsConnection")));
+
+// Registers Automapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<AuthorMapping>();
+});
+
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
+builder.Services.AddScoped<ITitleRepository, TitleRepository>();
+builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
+
 
 var app = builder.Build();
 

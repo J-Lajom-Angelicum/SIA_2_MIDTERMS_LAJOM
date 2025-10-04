@@ -6,8 +6,8 @@ namespace SIA_MIDTERMS_LAJOM.Models.Repositories
     {
         Task<Author> CreateAsync(Author Author);
         Task<Author> UpdateAsync(Author Author);
-        Task<Author> GetByIdAsync(int id);
+        Task<Author> GetByIdAsync(string id);
         Task<IEnumerable<Author>> GetAllAsync();
-        Task<bool> DeleteAsync(int id); // optional if you want hard/soft delete
+        Task<bool> DeleteAsync(string id); // optional if you want hard/soft delete
     }
 }
