@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SIA_MIDTERMS_LAJOM.Models.DTO.TitleDTO.TitleReadDTO>
+
+@{
+    ViewData["Title"] = "Titles";
+}
+
+<h2>Titles</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Title</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title ID</th>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Publisher</th>
+            <th>Price</th>
+            <th>Advance</th>
+            <th>Royalty</th>
+            <th>YTD Sales</th>
+            <th>Pubdate</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var title in Model)
+        {
+            <tr>
+                <td>@title.TitleId</td>
+                <td>@title.Title1</td>
+                <td>@title.Type</td>
+                <td>@title.Pub?.PubName</td>
+                <td>@title.Price</td>
+                <td>@title.Advance</td>
+                <td>@title.Royalty</td>
+                <td>@title.YtdSales</td>
+                <td>@title.Pubdate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@title.TitleId" class="btn btn-warning btn-sm">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@title.TitleId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

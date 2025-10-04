@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SIA_MIDTERMS_LAJOM.Models.DTO.PublisherDTO.PublisherReadDTO>
+
+@{
+    ViewData["Title"] = "Publishers";
+}
+
+<h2>Publishers</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Publisher</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Publisher ID</th>
+            <th>Publisher Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var publisher in Model)
+        {
+            <tr>
+                <td>@publisher.PubId</td>
+                <td>@publisher.PubName</td>
+                <td>@publisher.City</td>
+                <td>@publisher.State</td>
+                <td>@publisher.Country</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@publisher.PubId" class="btn btn-warning btn-sm">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@publisher.PubId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
